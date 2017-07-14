@@ -1,0 +1,4 @@
+[submodule "hydrachain"]
+	path = hydrachain
+	url = https://github.com/bts/hydrachain.git
+	branch = honeybadger
