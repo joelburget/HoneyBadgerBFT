@@ -1,7 +1,7 @@
 FROM honeybadger
 
 RUN apt-get update && \
-    apt-get install -y curl git-core build-essential libgmp-dev rsync pkg-config
+    apt-get install -y curl build-essential rsync
 
 RUN pip install --upgrade pip setuptools
 

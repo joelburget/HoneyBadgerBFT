@@ -16,11 +16,16 @@ Other licenses may be issued at the authors' discretion.
 
 Build the docker image first.
 
-    docker build -t honeybadgerbft .
+    docker build -f honeybadger.dockerfile -t honeybadger .
 
 By default, the Dockerfile will run the test suite:
 
-    docker run -it honeybadgerbft
+    docker run -it honeybadger
+
+There is also a `hydrachain` docker image used to run [hydrachain](https://github.com/HydraChain/hydrachain) extended with HoneyBadger.
+
+    docker build -f hydrachain.dockerfile -t hydrachain .
+    docker run -it hydrachain
 
 ### Installation && How to run the code
 

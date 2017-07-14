@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM python:2.7.10
 
 # Default cluster arguments. Override with "-e"
 #
@@ -11,7 +11,7 @@ ENV B 16
 
 
 RUN apt-get update
-RUN apt-get -y install python-gevent git wget python-pip python-dev python-gmpy2 flex bison libgmp-dev libssl-dev
+RUN apt-get -y install python-gevent git wget python-gmpy2 flex bison libgmp-dev libssl-dev
 
 RUN pip install PySocks pycrypto ecdsa zfec gipc nose2
 
