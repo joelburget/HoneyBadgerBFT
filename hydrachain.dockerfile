@@ -1,3 +1,21 @@
 FROM honeybadger
 
-CMD /bin/bash
+RUN apt-get update && \
+    apt-get install -y curl git-core build-essential libgmp-dev rsync pkg-config
+
+RUN pip install --upgrade pip setuptools
+
+# Pre-install hydrachain dependency
+RUN pip install secp256k1==0.13.2
+
+WORKDIR /
+ADD hydrachain hydrachain
+
+WORKDIR /hydrachain
+RUN pip install . && cd .. && rm -rf /hydrachain
+WORKDIR /
+
+ENTRYPOINT ["/usr/local/bin/hydrachain"]
+
+# Run multiple nodes in a single process
+CMD ["-d", "datadir", "runmultiple", "--num_validators=3", "--seed=42"]
