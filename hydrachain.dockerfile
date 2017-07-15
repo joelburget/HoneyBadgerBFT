@@ -9,11 +9,15 @@ RUN pip install --upgrade pip setuptools
 RUN pip install secp256k1==0.13.2
 
 WORKDIR /
-ADD hydrachain hydrachain
+ADD hydrachain/requirements.txt hydrachain/
 
 WORKDIR /hydrachain
-RUN pip install . && cd .. && rm -rf /hydrachain
+RUN pip install -r requirements.txt && cd .. && rm -rf /hydrachain
 WORKDIR /
+
+ADD hydrachain hydrachain
+WORKDIR /hydrachain
+RUN pip install . && cd .. && rm -rf /hydrachain
 
 ENTRYPOINT ["/usr/local/bin/hydrachain"]
 
